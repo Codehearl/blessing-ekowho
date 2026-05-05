@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blessing Ekowho - Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Import Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <span class="nav-logo">BE.</span>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="https://drive.google.com/drive/folders/11c13ZSaHKB2VAW0VbmE_O-1IS-hA-V7M" target="_blank" class="nav-cta">
+      View Portfolio <i data-lucide="external-link" style="width: 12px; height: 12px;"></i>
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="about">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Copywriter & Brand Strategist</div>
+      <h1 class="hero-h1">Words that<br /><em>convert,</em> rank & stick.</h1>
+      <p class="hero-sub">8+ years crafting words that sell, rank, and stick — across fintech, NGOs, and consumer brands. Direct response, SEO, lifecycle email, UX copy, and brand storytelling.</p>
+      <div class="hero-actions">
+        <a href="mailto:blessingekowho@gmail.com" class="btn-primary">
+          <i data-lucide="mail" style="width: 15px; height: 15px;"></i> Get in touch
+        </a>
+        <a href="https://drive.google.com/drive/folders/11c13ZSaHKB2VAW0VbmE_O-1IS-hA-V7M" target="_blank" class="btn-outline">
+          View Portfolio <i data-lucide="external-link" style="width: 14px; height: 14px;"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MARQUEE -->
+  <div class="marquee-bar">
+    <div class="marquee-track" id="marquee-track">
+      <!-- Injected via JS -->
+    </div>
+  </div>
+
+  <!-- PORTFOLIO -->
+  <section class="section" id="portfolio">
+    <div class="section-inner">
+      <div class="reveal-box">
+        <p class="section-label">Selected Work</p>
+        <h2 class="section-title" style="margin-bottom: 3rem;">Specialised across<br />industries that matter.</h2>
+      </div>
+
+      <div class="reveal-box" style="transition-delay: 0.1s;">
+        <div class="filter-bar" id="filter-bar">
+          <button class="filter-btn active" data-filter="All">All</button>
+          <button class="filter-btn" data-filter="Fintech">Fintech</button>
+          <button class="filter-btn" data-filter="NGO">NGO</button>
+          <button class="filter-btn" data-filter="E-commerce">E-commerce</button>
+          <button class="filter-btn" data-filter="Food & Lifestyle">Food & Lifestyle</button>
+        </div>
+      </div>
+
+      <div class="project-grid" id="project-grid">
+        <!-- Projects injected via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section exp-section" id="experience">
+    <div class="section-inner">
+      <div class="exp-grid">
+        <div class="exp-sticky">
+          <div class="reveal-box">
+            <p class="section-label">Career Journey</p>
+            <h2 class="section-title">8+ years.<br />Real results.</h2>
+            <p style="margin-top: 1.5rem; color: var(--muted); font-size: 0.9rem; line-height: 1.7; font-weight: 300;">
+              From NGO content to fintech lifecycle campaigns — a track record built on understanding what makes people read, click, and buy.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline" id="timeline">
+          <!-- Experience injected via JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="reveal-box">
+      <div class="contact-card">
+        <div>
+          <h2 class="contact-title">Ready to build something <span>great?</span></h2>
+          <p class="contact-sub">Let's craft words that move your audience — and your numbers.</p>
+          <div class="contact-details">
+            <div class="contact-item"><i data-lucide="mail" style="width: 15px; height: 15px;"></i> blessingekowho@gmail.com</div>
+            <div class="contact-item"><i data-lucide="phone" style="width: 15px; height: 15px;"></i> 09065550687</div>
+            <div class="contact-item"><i data-lucide="map-pin" style="width: 15px; height: 15px;"></i> Lagos, Nigeria</div>
+          </div>
+        </div>
+        <div class="contact-actions">
+          <a href="mailto:blessingekowho@gmail.com" class="btn-primary" style="justify-content: center;">Send a Message</a>
+          <div class="social-row">
+            <a href="https://linkedin.com/in/blessingekowho" target="_blank" class="social-btn"><i data-lucide="linkedin" style="width: 18px; height: 18px;"></i></a>
+            <a href="https://drive.google.com/drive/folders/11c13ZSaHKB2VAW0VbmE_O-1IS-hA-V7M" target="_blank" class="social-btn"><i data-lucide="globe" style="width: 18px; height: 18px;"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer-bar">
+    © <span id="year"></span> <span>Blessing Ekowho</span> · Copywriter & Brand Strategist
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
