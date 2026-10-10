@@ -256,6 +256,99 @@ const projects = [
     desc: "Complete company profile document for Mikay Agency — credentials, positioning, and service offerings written to win clients on first read.",
     link: "https://drive.google.com/drive/folders/11c13ZSaHKB2VAW0VbmE_O-1IS-hA-V7M",
     tags: ["Company Profile", "B2B", "Brand Story"]
+  },
+
+  // ── SEO COPYWRITING · COALITION TECHNOLOGIES ──────────────
+  // Results are for the full client campaign, which often included web development or PPC.
+  {
+    title: "Peralta Defense — Armed Security Service Page",
+    industry: "Security Services", type: "SEO Copywriting",
+    folder: "SEO Content",
+    desc: "Service, location, training and blog copy built around how people compare security providers. Campaign result: +900% organic conversions and +1,105.2% yearly impressions.",
+    link: "https://www.peraltadefense.com/services/armed-security/",
+    tags: ["Service Pages", "Local SEO", "+900% conversions"]
+  },
+  {
+    title: "Cummins Logistics — Warehousing Page",
+    industry: "Logistics", type: "SEO Copywriting",
+    folder: "SEO Content",
+    desc: "Page copy, metadata and structure optimised around warehousing and 3PL searches. Campaign result: +366.7% organic conversions and +188.5% conversion rate year over year.",
+    link: "https://www.cumminslogistics.com/services/warehousing-solutions/",
+    tags: ["B2B", "Service Pages", "+366.7% conversions"]
+  },
+  {
+    title: "Wall Tent Shop — Site-wide Copy",
+    industry: "Outdoor Ecommerce", type: "SEO Copywriting",
+    folder: "SEO Content",
+    desc: "Optimised copy across the store to recover lost keyword rankings and gain AI search visibility. Campaign result: +273% organic conversions and +56.4% transactions in six months.",
+    link: "https://www.walltentshop.com/",
+    tags: ["Ecommerce", "AI SEO", "+273% conversions"]
+  },
+  {
+    title: "Rescue Restoration — Water Restoration Page",
+    industry: "Property Restoration", type: "SEO Copywriting",
+    folder: "SEO Content",
+    desc: "Service pages, location pages and a new restoration blog. Campaign result: +250% organic conversions, with leads at under half the industry-average cost.",
+    link: "https://rescuega.com/services/water-restoration/",
+    tags: ["Local SEO", "Blog Strategy", "+250% conversions"]
+  },
+  {
+    title: "Lakeview Building Group — Lake Norman Builder Page",
+    industry: "Home Building", type: "SEO Copywriting",
+    folder: "SEO Content",
+    desc: "Service pages aligned to geographic intent, plus conversational copy written for how people ask questions in AI tools. Campaign result: +170% organic conversions month over month.",
+    link: "https://www.lakeviewbuildinggroup.com/lake-norman-home-builder",
+    tags: ["Local SEO", "AI SEO", "+170% conversions"]
+  },
+  {
+    title: "Maxwell Locke & Ritter — Insights Blog",
+    industry: "Accounting & Advisory", type: "SEO Copywriting",
+    folder: "SEO Content",
+    desc: "Keyword-led copy updates and reformatted blog posts with article schema. Campaign result: backlinks up 1,247.7% (1,655 to 22,305) and organic search at 85% of sessions.",
+    link: "https://www.mlrpc.com/insights/",
+    tags: ["Blog", "Schema", "Link Building"]
+  },
+  {
+    title: "FC Engineering Services — Services Pages",
+    industry: "Engineering", type: "SEO Copywriting",
+    folder: "SEO Content",
+    desc: "Service pages for analog, RF, mixed-signal and mechanical design searches. Campaign result: +1,333.3% conversions in four months and +75% organic traffic, alongside PPC.",
+    link: "https://engsrvcs.com/services/",
+    tags: ["B2B", "Service Pages", "+1,333% conversions"]
+  },
+  {
+    title: "Casa Teresa — Vacation Packages & Destination Pages",
+    industry: "Luxury Hospitality", type: "SEO Copywriting",
+    folder: "SEO Content",
+    desc: "Experience, destination and planning pages plus blog content to grow direct bookings. Campaign result: +541% organic traffic and +192% organic goal completions.",
+    link: "https://casateresacr.com/luxury-vacation-packages/",
+    tags: ["Hospitality", "Destination Content", "+541% traffic"]
+  },
+
+  // ── SEO ARTICLES ──────────────────────────────────────────
+  {
+    title: "Water Damage Behind Walls: How to Tell if It Has Spread",
+    industry: "Property Restoration", type: "SEO Copywriting",
+    folder: "SEO Articles",
+    desc: "Published Sep 17, 2026 on Rescue Restoration. Question-led headings covering signs, inspection, detection methods and when to call a professional.",
+    link: "https://rescuega.com/how-do-you-know-if-water-damage-has-spread-behind-walls/",
+    tags: ["Blog Article", "Informational", "Sep 2026"]
+  },
+  {
+    title: "The Four Pillars of SaaS Quality of Earnings",
+    industry: "Accounting & Advisory", type: "SEO Copywriting",
+    folder: "SEO Articles",
+    desc: "Published Oct 8, 2026 on the Maxwell Locke & Ritter blog. Thought-leadership article for investors and deal teams, with an FAQ section.",
+    link: "https://www.mlrpc.com/insights/blog/the-four-pillars-of-saas-quality-of-earnings-what-investors-should-know/",
+    tags: ["Thought Leadership", "B2B", "Oct 2026"]
+  },
+  {
+    title: "8 Things to Know Before Building a Custom Home",
+    industry: "Home Building", type: "SEO Copywriting",
+    folder: "SEO Articles",
+    desc: "Blog article for Lakeview Building Group covering budget, timeline, floor plans, storage and future-proofing for first-time custom home buyers.",
+    link: "https://www.lakeviewbuildinggroup.com/blog/8-things-to-know-before-building-a-custom-home",
+    tags: ["Blog Article", "Local SEO", "Informational"]
   }
 ];
 
@@ -329,15 +422,21 @@ const industries = [
     companies: [
       { name: "Bovas Group", domain: "bovasgroup.com" }
     ]
+  },
+  {
+    name: "SEO Clients · Local, B2B & Ecommerce",
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`,
+    companies: [
+      { name: "Peralta Defense", domain: "peraltadefense.com" },
+      { name: "Cummins Logistics", domain: "cumminslogistics.com" },
+      { name: "Wall Tent Shop", domain: "walltentshop.com" },
+      { name: "Rescue Restoration", domain: "rescuega.com" },
+      { name: "Lakeview Building Group", domain: "lakeviewbuildinggroup.com" },
+      { name: "Maxwell Locke & Ritter", domain: "mlrpc.com" },
+      { name: "FC Engineering", domain: "engsrvcs.com" },
+      { name: "Casa Teresa", domain: "casateresacr.com" }
+    ]
   }
-];
-
-const experience = [
-  { company: "4th Leap Consultancy", role: "Client Services & Content Strategist", points: ["Built bespoke content strategies mapping pillars, editorial calendars, and channel mix to business growth goals.", "Defined brand voice guidelines for Iconic University, Bovas Group, and Play Street."] },
-  { company: "Mikay Agency", role: "Copywriter", points: ["Campaign copy and brand messaging across food, fashion, and real estate brands.", "Supervised full content pipeline — photography briefs, graphic direction, quality control."] },
-  { company: "CredPal & Enif", role: "Marketing Communications Officer", points: ["60% growth in signups and engagement. Sub-5% spam rate across all lifecycle campaigns.", "Wrote all UX/product copy for app and website, plus ad copy across Meta, Instagram, LinkedIn & Google."] },
-  { company: "Coalition Technologies", role: "SEO Copywriter", points: ["Long & short-form SEO content across tech, health, finance and e-commerce niches.", "Full on-page optimisation: meta, H1s, alt text, anchor text, internal linking."] },
-  { company: "Vahlid", role: "Digital Marketing Specialist & Copywriter", points: ["Rewrote all website and UX app copy from scratch. 80% increase in signups.", "Radio jingles, TV ad scripts, plus paid social on Meta, LinkedIn, and Google."] }
 ];
 
 const skills = ['Direct Response', 'SEO Copywriting', 'Email Automation', 'UX & Product Copy', 'Brand Storytelling', 'Content Strategy', 'Ad & Social Copy', 'Video Scriptwriting', 'Lifecycle Emails', 'Conversion Copy'];
@@ -402,6 +501,7 @@ const industryColors = {
   5: '#58B8A8', // education teal
   6: '#E8A03A', // entertainment amber
   7: '#E85A5A', // energy red
+  8: '#58B8D8', // seo clients blue
 };
 
 // ============================================================
@@ -490,6 +590,8 @@ const folderColors = {
   'Emails':               '#7BB87A',
   'Other Copy':           '#5B87B8',
   'Web & Strategy':       '#A07BDC',
+  'SEO Content':          '#58B8D8',
+  'SEO Articles':         '#58B8A8',
 };
 
 const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>`;
@@ -499,7 +601,10 @@ function renderProjects(filter = 'All') {
   const countEl = document.getElementById('filter-count');
   grid.innerHTML = '';
 
-  const filtered = filter === 'All' ? projects : projects.filter(p => p.type === filter);
+  const tabOrder = ['SEO Copywriting', 'Sales Copy', 'Emails', 'Social Media', 'Web & Strategy', 'Other Copy'];
+  const filtered = filter === 'All'
+    ? [...projects].sort((a, b) => tabOrder.indexOf(a.type) - tabOrder.indexOf(b.type))
+    : projects.filter(p => p.type === filter);
   countEl.textContent = `${filtered.length} project${filtered.length !== 1 ? 's' : ''}`;
 
   filtered.forEach((p, i) => {
@@ -533,38 +638,6 @@ function renderProjects(filter = 'All') {
   });
 
   setupObserver(document.querySelectorAll('.project-card-wrap.reveal-box:not(.visible)'));
-}
-
-// ============================================================
-// RENDER EXPERIENCE
-// ============================================================
-function renderExperience() {
-  const timeline = document.getElementById('timeline');
-  experience.forEach((exp, i) => {
-    const item = document.createElement('div');
-    item.className = 'reveal-box';
-    item.style.transitionDelay = `${i * 0.1}s`;
-
-    item.innerHTML = `
-      <div class="tl-item">
-        <div class="tl-marker">
-          <span class="tl-num">0${i+1}</span>
-          <div class="tl-dot"></div>
-        </div>
-        <h3 class="tl-role">${exp.role}</h3>
-        <p class="tl-company">${exp.company}</p>
-        <ul class="tl-points">
-          ${exp.points.map(pt => `
-            <li class="tl-point">
-              <svg class="tl-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>${pt}</span>
-            </li>
-          `).join('')}
-        </ul>
-      </div>
-    `;
-    timeline.appendChild(item);
-  });
 }
 
 // ============================================================
@@ -634,7 +707,6 @@ function setupHamburger() {
 // ============================================================
 document.addEventListener('DOMContentLoaded', () => {
   renderTicker();
-  renderExperience();
   renderProjects();
   renderIndustries();
   setupFilters();
