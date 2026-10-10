@@ -2,39 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="theme-color" content="#f8f7f3">
+  <meta name="description" content="Blessing Ekowho is a copywriter and content strategist helping brands grow through SEO, sales copy, email and brand storytelling.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blessing Ekowho — Copywriter & Content Strategist</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Noise texture overlay -->
-  <div class="noise-overlay"></div>
+  <a class="skip-link" href="#portfolio">Skip to selected work</a>
 
   <!-- NAV -->
-  <nav class="nav" id="nav">
+  <nav class="nav" id="nav" aria-label="Main navigation">
     <a href="#about" class="nav-logo">
       <span class="logo-mark">BE</span>
-      <span class="logo-sub">·</span>
+      <span class="logo-name">Blessing Ekowho<span>Copywriter & Content Strategist</span></span>
     </a>
     <div class="nav-links">
       <a href="#about" class="nav-link">About</a>
       <a href="#portfolio" class="nav-link">Work</a>
       <a href="#contact" class="nav-link">Contact</a>
     </div>
-    <a href="https://drive.google.com/drive/folders/11c13ZSaHKB2VAW0VbmE_O-1IS-hA-V7M" target="_blank" class="nav-cta">
+    <a href="https://drive.google.com/drive/folders/11c13ZSaHKB2VAW0VbmE_O-1IS-hA-V7M" target="_blank" rel="noopener noreferrer" class="nav-cta">
       View Portfolio <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
     </a>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
       <span></span><span></span>
     </button>
   </nav>
 
   <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu" id="mobile-menu" inert>
     <a href="#about" class="mobile-link">About</a>
     <a href="#portfolio" class="mobile-link">Work</a>
     <a href="#contact" class="mobile-link">Contact</a>
@@ -42,11 +43,7 @@
 
   <!-- HERO -->
   <header class="hero" id="about">
-    <div class="hero-bg-grid"></div>
-    <div class="hero-glow hero-glow-1"></div>
-    <div class="hero-glow hero-glow-2"></div>
-    <div class="hero-glow hero-glow-3"></div>
-
+    <div class="hero-layout">
     <div class="hero-content">
       <div class="hero-eyebrow">
         <span class="eyebrow-dot"></span>
@@ -55,13 +52,12 @@
 
       <h1 class="hero-h1">
         <span class="h1-line h1-line-1">Words that</span>
-        <span class="h1-line h1-line-2"><em>convert,</em></span>
-        <span class="h1-line h1-line-3">rank & stick.</span>
+        <span class="h1-line h1-line-2"><em>mean business.</em></span>
       </h1>
 
       <div class="hero-descriptor">
         <div class="descriptor-line"></div>
-        <span>Copywriter & Content Strategist · 8+ Years</span>
+        <span>Clear thinking. Compelling copy. Real results.</span>
       </div>
 
       <p class="hero-sub">
@@ -73,12 +69,25 @@
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           Get in touch
         </a>
-        <a href="https://drive.google.com/drive/folders/11c13ZSaHKB2VAW0VbmE_O-1IS-hA-V7M" target="_blank" class="btn-ghost">
+        <a href="#portfolio" class="btn-ghost">
           See my work
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
       </div>
 
+    </div>
+
+    <aside class="editorial-card" aria-label="My approach to copy">
+      <div class="editorial-top"><span>A NOTE ON GOOD COPY</span><span>01 / BE</span></div>
+      <div class="editorial-body">
+        <span class="editorial-asterisk" aria-hidden="true">✳</span>
+        <p>The right words<br>make all the<br><em>difference.</em></p>
+        <div class="editorial-rule"></div>
+        <span>Rooted in strategy.<br>Written for people.</span>
+      </div>
+      <div class="editorial-bottom"><span>STRATEGY → STORY → ACTION</span><span aria-hidden="true">↗</span></div>
+    </aside>
+    </div>
       <div class="hero-stats">
         <div class="stat-item">
           <span class="stat-num">8+</span>
@@ -92,23 +101,18 @@
         <div class="stat-divider"></div>
         <div class="stat-item">
           <span class="stat-num">80%</span>
-          <span class="stat-label">Avg signup growth</span>
+          <span class="stat-label">Signup growth · up to</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
           <span class="stat-num">+900%</span>
-          <span class="stat-label">Organic conversions (SEO)</span>
+          <span class="stat-label">Organic conversions · up to</span>
         </div>
       </div>
-    </div>
-
-    <div class="hero-scroll-hint">
-      <div class="scroll-line"></div>
-      <span>scroll</span>
-    </div>
   </header>
 
-  <!-- SKILLS TICKER -->
+  <main>
+  <!-- EXPERTISE -->
   <div class="ticker-bar">
     <div class="ticker-track" id="ticker-track"></div>
   </div>
@@ -116,55 +120,57 @@
   <!-- PORTFOLIO -->
   <section class="section" id="portfolio">
     <div class="section-inner">
-      <div class="section-header reveal-box">
+      <div class="section-header">
         <div class="section-meta">
           <span class="section-num">01</span>
           <span class="section-label">Selected Work</span>
         </div>
-        <h2 class="section-title">Specialised across<br /><em>diverse industries.</em></h2>
-      </div>
-
-      <!-- INDUSTRIES -->
-      <div class="industries-wrapper reveal-box" style="transition-delay:0.1s;">
-        <h3 class="industries-heading">
-          <span class="industries-count" id="industries-count">9</span> Industries
-          <span class="industries-sub">· Partners & clients</span>
-        </h3>
-        <div class="industries-grid" id="industries-grid">
-          <!-- Injected via JS -->
-        </div>
+        <div class="section-heading-row"><h2 class="section-title">Good words.<br><em>Measurable impact.</em></h2><p class="section-intro">A selection of the strategies, stories and campaigns I’ve helped bring to life. Explore the work by discipline.</p></div>
       </div>
 
       <!-- FILTER -->
-      <div class="filter-wrapper reveal-box" style="transition-delay:0.15s;">
-        <div class="filter-bar" id="filter-bar">
-          <button class="filter-btn active" data-filter="All">All</button>
-          <button class="filter-btn" data-filter="SEO Copywriting">SEO</button>
-          <button class="filter-btn" data-filter="Sales Copy">Sales</button>
-          <button class="filter-btn" data-filter="Emails">Email</button>
-          <button class="filter-btn" data-filter="Social Media">Social</button>
-          <button class="filter-btn" data-filter="Web & Strategy">Web & Strategy</button>
-          <button class="filter-btn" data-filter="Other Copy">Other</button>
+      <div class="filter-wrapper">
+        <div class="filter-bar" id="filter-bar" role="group" aria-label="Filter projects">
+          <button class="filter-btn active" aria-pressed="true" data-filter="All">All</button>
+          <button class="filter-btn" aria-pressed="false" data-filter="SEO Copywriting">SEO</button>
+          <button class="filter-btn" aria-pressed="false" data-filter="Sales Copy">Sales</button>
+          <button class="filter-btn" aria-pressed="false" data-filter="Emails">Email</button>
+          <button class="filter-btn" aria-pressed="false" data-filter="Social Media">Social</button>
+          <button class="filter-btn" aria-pressed="false" data-filter="Web & Strategy">Web & Strategy</button>
+          <button class="filter-btn" aria-pressed="false" data-filter="Other Copy">Other</button>
         </div>
-        <span class="filter-count" id="filter-count">41 projects</span>
+        <span class="filter-count" id="filter-count" role="status">41 projects</span>
       </div>
 
+      <noscript><p>Enable JavaScript to filter projects, or <a href="https://drive.google.com/drive/folders/11c13ZSaHKB2VAW0VbmE_O-1IS-hA-V7M">browse the full portfolio on Google Drive</a>.</p></noscript>
       <div class="project-grid" id="project-grid">
         <!-- Injected via JS -->
       </div>
+      <div class="more-projects"><button class="btn-ghost" id="show-more" aria-controls="project-grid" type="button" hidden>Show more projects</button></div>
+      <p class="work-note">Results reflect wider client campaigns, which may include development, SEO and paid media.</p>
+    </div>
+  </section>
+
+  <section class="section clients-section" aria-labelledby="clients-title">
+    <div class="section-inner">
+      <div class="section-meta"><span class="section-num">02</span><span class="section-label">Across industries</span></div>
+      <div class="section-heading-row">
+        <h2 class="section-title" id="clients-title">Different worlds.<br><em>The same care.</em></h2>
+        <p class="section-intro">From ambitious fintechs to established consumer brands. Partners and clients across <span id="industries-count">9</span> industry groups.</p>
+      </div>
+      <div class="industries-grid" id="industries-grid"></div>
     </div>
   </section>
 
   <!-- CONTACT -->
   <section class="contact-section" id="contact">
     <div class="contact-inner">
-      <div class="contact-bg-text">HELLO</div>
-      <div class="reveal-box">
+      <div class="contact-content">
         <div class="section-meta" style="justify-content:center;">
-          <span class="section-num">02</span>
+          <span class="section-num">03</span>
           <span class="section-label">Get in Touch</span>
         </div>
-        <h2 class="contact-title">Ready to build<br />something <em>great?</em></h2>
+        <h2 class="contact-title">Your next chapter<br>starts with <em>a conversation.</em></h2>
         <p class="contact-sub">Let's craft words that move your audience — and your numbers.</p>
 
         <div class="contact-links">
@@ -185,10 +191,10 @@
         <div class="contact-actions">
           <a href="mailto:blessingekowho@gmail.com" class="btn-primary btn-large">Send a message</a>
           <div class="social-links">
-            <a href="https://linkedin.com/in/blessingekowho" target="_blank" class="social-btn" aria-label="LinkedIn">
+            <a href="https://linkedin.com/in/blessingekowho" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
             </a>
-            <a href="https://drive.google.com/drive/folders/11c13ZSaHKB2VAW0VbmE_O-1IS-hA-V7M" target="_blank" class="social-btn" aria-label="Portfolio">
+            <a href="https://drive.google.com/drive/folders/11c13ZSaHKB2VAW0VbmE_O-1IS-hA-V7M" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Portfolio">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
             </a>
           </div>
@@ -196,6 +202,8 @@
       </div>
     </div>
   </section>
+
+  </main>
 
   <footer class="footer">
     <span>© <span id="year"></span> Blessing Ekowho</span>

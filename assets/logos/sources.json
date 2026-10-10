@@ -1,0 +1,50 @@
+{
+  "walltentshop.com": {
+    "path": "assets/logos/walltentshop.com.png",
+    "source": "https://www.walltentshop.com/cdn/shop/files/wts-logo-web_400x.png?v=1718293587"
+  },
+  "lakeviewbuildinggroup.com": {
+    "path": "assets/logos/lakeviewbuildinggroup.com.png",
+    "source": "https://images.squarespace-cdn.com/content/v1/62dabfba43d63666c1579de3/e33a199a-c160-40ae-84b4-77a2bc93ace5/Lakeview-logo-Final-blue.png"
+  },
+  "mlrpc.com": {
+    "path": "assets/logos/mlrpc.com.png",
+    "source": "https://www.mlrpc.com/wp-content/uploads/2023/11/cropped-favicon-192x192.png"
+  },
+  "engsrvcs.com": {
+    "path": "assets/logos/engsrvcs.com.svg",
+    "source": "https://engsrvcs.com/wp-content/uploads/2023/10/sticky-logo.svg"
+  },
+  "casateresacr.com": {
+    "path": "assets/logos/casateresacr.com.png",
+    "source": "https://casateresacr.com/wp-content/uploads/2020/06/casa-teresa-logo.png"
+  },
+  "enif.ai": {
+    "path": "assets/logos/enif.ai.png",
+    "source": "https://enif.ai/images/favicon.png"
+  },
+  "iconicuniversity.edu.ng": {
+    "path": "assets/logos/iconicuniversity.edu.ng.png",
+    "source": "https://www.iconicuniversity.edu.ng/_next/image?url=%2Fimages%2Ficonic-web-logo.png&w=1920&q=75"
+  },
+  "bovasgroup.com": {
+    "path": "assets/logos/bovasgroup.com.png",
+    "source": "https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_auto,s_webp:avif/bovasgroup.com/wp-content/uploads/2022/08/bovas-header-logo-medium-300x138.png"
+  },
+  "peraltadefense.com": {
+    "path": "assets/logos/peraltadefense.com.png",
+    "source": "https://www.google.com/s2/favicons?domain=peraltadefense.com&sz=128"
+  },
+  "cumminslogistics.com": {
+    "path": "assets/logos/cumminslogistics.com.png",
+    "source": "https://www.google.com/s2/favicons?domain=cumminslogistics.com&sz=128"
+  },
+  "rescuega.com": {
+    "path": "assets/logos/rescuega.com.png",
+    "source": "https://www.google.com/s2/favicons?domain=rescuega.com&sz=128"
+  },
+  "credpal.com": {
+    "path": "assets/logos/credpal.com.png",
+    "source": "https://www.google.com/s2/favicons?domain=credpal.com&sz=128"
+  }
+}

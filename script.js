@@ -444,65 +444,65 @@ const skills = ['Direct Response', 'SEO Copywriting', 'Email Automation', 'UX & 
 // ============================================================
 // LOGO FETCHING
 // ============================================================
-const logoCache = {};
-
-function getLogoUrl(domain) {
-  if (!domain) return null;
-  // Use DuckDuckGo's icon service as primary, Clearbit as backup
-  return `https://logo.clearbit.com/${domain}`;
-}
-
-function getFaviconUrl(domain) {
-  return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
-}
+// Verified client assets and their source URLs are recorded in assets/logos/sources.json.
+const clientLogos = {
+  "walltentshop.com": "assets/logos/walltentshop.com.png",
+  "lakeviewbuildinggroup.com": "assets/logos/lakeviewbuildinggroup.com.png",
+  "mlrpc.com": "assets/logos/mlrpc.com.png",
+  "engsrvcs.com": "assets/logos/engsrvcs.com.svg",
+  "casateresacr.com": "assets/logos/casateresacr.com.png",
+  "enif.ai": "assets/logos/enif.ai.png",
+  "iconicuniversity.edu.ng": "assets/logos/iconicuniversity.edu.ng.png",
+  "bovasgroup.com": "assets/logos/bovasgroup.com.png",
+  "peraltadefense.com": "assets/logos/peraltadefense.com.png",
+  "cumminslogistics.com": "assets/logos/cumminslogistics.com.png",
+  "rescuega.com": "assets/logos/rescuega.com.png",
+  "credpal.com": "assets/logos/credpal.com.png"
+};
 
 function getInitials(name) {
-  return name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+  return name.split(/\s+/).filter(word => /[a-z0-9]/i.test(word)).map(word => word[0]).join('').slice(0, 2).toUpperCase();
+}
+
+function getProjectCompany(project) {
+  const hostname = new URL(project.link).hostname.replace(/^www\./, '');
+  const titleBrand = project.title.includes(' — ') ? project.title.split(' — ')[0] : '';
+  const companies = industries.flatMap(industry => industry.companies);
+  return companies.find(company => company.domain === hostname)
+    || companies.find(company => titleBrand === company.name || titleBrand.startsWith(company.name + ' '))
+    || { name: titleBrand || project.industry, domain: null };
 }
 
 function createLogoElement(company) {
-  if (!company.domain) {
-    const fallback = document.createElement('div');
-    fallback.className = 'company-logo-fallback';
-    fallback.textContent = getInitials(company.name);
-    return fallback;
-  }
+  const mark = document.createElement('span');
+  mark.className = 'company-logo-mark';
+  mark.setAttribute('aria-hidden', 'true');
+  const fallback = document.createElement('span');
+  fallback.className = 'company-logo-fallback';
+  fallback.textContent = getInitials(company.name);
+  mark.appendChild(fallback);
+
+  const source = clientLogos[company.domain];
+  if (!source) return mark;
 
   const img = document.createElement('img');
   img.className = 'company-logo-img';
-  img.alt = company.name;
-
-  // Try Clearbit first
-  img.src = getLogoUrl(company.domain);
-  img.onerror = function() {
-    // Fallback to Google favicon
-    this.src = getFaviconUrl(company.domain);
-    this.onerror = function() {
-      // Final fallback: initials
-      const fallback = document.createElement('div');
-      fallback.className = 'company-logo-fallback';
-      fallback.textContent = getInitials(company.name);
-      this.parentNode && this.parentNode.replaceChild(fallback, this);
-    };
+  img.alt = '';
+  img.loading = 'lazy';
+  img.decoding = 'async';
+  img.onload = () => {
+    fallback.hidden = true;
+    mark.classList.add('logo-loaded');
   };
-
-  return img;
+  img.onerror = () => {
+    img.hidden = true;
+    fallback.hidden = false;
+    mark.classList.remove('logo-loaded');
+  };
+  mark.appendChild(img);
+  img.src = source;
+  return mark;
 }
-
-// ============================================================
-// INDUSTRY CARD COLORS (per sector)
-// ============================================================
-const industryColors = {
-  0: '#C9A84C', // fintech gold
-  1: '#E8553A', // retail coral
-  2: '#7BB87A', // interior green
-  3: '#5B87B8', // corporate blue
-  4: '#A07BDC', // ngo purple
-  5: '#58B8A8', // education teal
-  6: '#E8A03A', // entertainment amber
-  7: '#E85A5A', // energy red
-  8: '#58B8D8', // seo clients blue
-};
 
 // ============================================================
 // RENDER INDUSTRIES
@@ -513,12 +513,9 @@ function renderIndustries() {
   countEl.textContent = industries.length;
   grid.innerHTML = '';
 
-  industries.forEach((ind, i) => {
+  industries.forEach(ind => {
     const card = document.createElement('div');
     card.className = 'industry-card';
-    card.style.transitionDelay = `${i * 0.07}s`;
-
-    const color = industryColors[i] || '#C9A84C';
     const companiesHtml = ind.companies.map(c => {
       return `<div class="company-logo-pill" data-domain="${c.domain || ''}" data-name="${c.name}">
         <div class="company-logo-slot"></div>
@@ -528,7 +525,7 @@ function renderIndustries() {
 
     card.innerHTML = `
       <div class="industry-card-header">
-        <div class="industry-icon-wrap" style="color:${color};background:${color}18;border-color:${color}30">
+        <div class="industry-icon-wrap">
           ${ind.icon}
         </div>
         <div>
@@ -542,7 +539,7 @@ function renderIndustries() {
     grid.appendChild(card);
 
     // Load logos after DOM insertion
-    card.querySelectorAll('.company-logo-pill').forEach((pill, ci) => {
+    card.querySelectorAll('.company-logo-pill').forEach(pill => {
       const slot = pill.querySelector('.company-logo-slot');
       const domain = pill.dataset.domain;
       const name = pill.dataset.name;
@@ -551,8 +548,6 @@ function renderIndustries() {
     });
   });
 
-  // Trigger reveal observer for industry cards
-  setupObserver(document.querySelectorAll('.industry-card'));
 }
 
 // ============================================================
@@ -560,7 +555,7 @@ function renderIndustries() {
 // ============================================================
 function renderTicker() {
   const track = document.getElementById('ticker-track');
-  const items = [...skills, ...skills].map(s =>
+  const items = skills.map(s =>
     `<span class="ticker-item"><span class="ticker-dot"></span>${s}</span>`
   ).join('');
   track.innerHTML = items;
@@ -582,23 +577,75 @@ const industryIconMap = {
   'Professional':         { icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>`, color: '#5B87B8' },
 };
 
-// Folder labels → subtle badge color
-const folderColors = {
-  'Social Media Designs': '#C9A84C',
-  'Social Media Copy':    '#E8A03A',
-  'Sales Copy':           '#E8553A',
-  'Emails':               '#7BB87A',
-  'Other Copy':           '#5B87B8',
-  'Web & Strategy':       '#A07BDC',
-  'SEO Content':          '#58B8D8',
-  'SEO Articles':         '#58B8A8',
-};
-
 const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>`;
+
+// Covers use portfolio metadata, rather than invented screenshots or results.
+const projectThemes = {
+  'SEO Copywriting': ['sage', 'SEARCH & DISCOVERY'],
+  'Sales Copy': ['clay', 'WORDS THAT SELL'],
+  'Emails': ['lavender', 'IN THE INBOX'],
+  'Social Media': ['peach', 'IN THE CONVERSATION'],
+  'Web & Strategy': ['blue', 'THE BIGGER PICTURE'],
+  'Other Copy': ['sand', 'A DISTINCTIVE VOICE']
+};
+const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+let revealObserver;
+let filterAnimation;
+let filterRevision = 0;
+const runningAnimations = new Set();
+
+function playMotion(element, frames, options) {
+  if (motionPreference.matches || !element.animate) return null;
+  const animation = element.animate(frames, options);
+  runningAnimations.add(animation);
+  animation.finished.catch(() => {}).finally(() => runningAnimations.delete(animation));
+  return animation;
+}
+
+motionPreference.addEventListener('change', event => {
+  if (event.matches) runningAnimations.forEach(animation => animation.cancel());
+});
+
+function revealElements(elements) {
+  if (!revealObserver && 'IntersectionObserver' in window) {
+    revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        revealObserver.unobserve(entry.target);
+        playMotion(entry.target, [
+          { opacity: 0, transform: 'translateY(28px) scale(.985)' },
+          { opacity: 1, transform: 'translateY(0) scale(1)' }
+        ], { duration: 650, delay: Number(entry.target.dataset.revealDelay || 0), easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' });
+      });
+    }, { threshold: 0.08 });
+  }
+  elements.forEach((element, index) => {
+    if (element.hidden) return;
+    element.dataset.revealDelay = (index % 3) * 65;
+    revealObserver?.observe(element);
+  });
+}
+
+async function transitionProjects(filter) {
+  const revision = ++filterRevision;
+  filterAnimation?.cancel();
+  const grid = document.getElementById('project-grid');
+  grid.setAttribute('aria-busy', 'true');
+  filterAnimation = playMotion(grid, [
+    { opacity: 1, transform: 'translateY(0)' },
+    { opacity: 0, transform: 'translateY(8px)' }
+  ], { duration: 140, easing: 'ease-out', fill: 'forwards' });
+  if (filterAnimation) await filterAnimation.finished.catch(() => {});
+  if (revision !== filterRevision) return;
+  filterAnimation?.cancel();
+  renderProjects(filter);
+  grid.setAttribute('aria-busy', 'false');
+}
 
 function renderProjects(filter = 'All') {
   const grid = document.getElementById('project-grid');
   const countEl = document.getElementById('filter-count');
+  grid.querySelectorAll('.project-card-wrap').forEach(card => revealObserver?.unobserve(card));
   grid.innerHTML = '';
 
   const tabOrder = ['SEO Copywriting', 'Sales Copy', 'Emails', 'Social Media', 'Web & Strategy', 'Other Copy'];
@@ -609,19 +656,35 @@ function renderProjects(filter = 'All') {
 
   filtered.forEach((p, i) => {
     const meta = industryIconMap[p.industry] || { icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/></svg>`, color: '#C9A84C' };
-    const folderColor = folderColors[p.folder] || '#C9A84C';
 
+    const [theme, coverLabel] = projectThemes[p.type] || projectThemes['Other Copy'];
+    const company = getProjectCompany(p);
+    const brand = company.name;
+    const result = p.tags.find(tag => tag.startsWith('+')) || p.tags[0];
     const wrap = document.createElement('div');
-    wrap.className = 'project-card-wrap reveal-box';
-    wrap.style.transitionDelay = `${i * 0.04}s`;
+    wrap.className = 'project-card-wrap';
+    wrap.dataset.theme = theme;
+    wrap.hidden = i >= 6;
 
     wrap.innerHTML = `
-      <div class="card" onclick="window.open('${p.link}', '_blank')">
+      <a class="card" href="${p.link}" target="_blank" rel="noopener noreferrer">
+        <div class="project-cover" aria-hidden="true">
+          <div class="cover-topline"><span>${coverLabel}</span><span>${String(i + 1).padStart(2, '0')}</span></div>
+          <div class="cover-orbit"></div>
+          <div class="cover-paper">
+            <span class="paper-brand"><span class="project-logo-slot"></span><span class="paper-eyebrow">${p.folder}</span></span>
+            <span class="paper-title">${brand}</span>
+            <span class="paper-rule"></span>
+            <span class="paper-footer">Copy with a clear purpose. <span>↗</span></span>
+          </div>
+          <span class="cover-result">${result}</span>
+        </div>
+        <div class="card-body">
         <div class="card-head">
-          <div class="card-icon" style="color:${meta.color};">${meta.icon}</div>
-          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px;">
+          <div class="card-icon" aria-hidden="true">${meta.icon}</div>
+          <div class="card-meta">
             <span class="card-badge">${p.type}</span>
-            <span class="card-folder" style="--fc:${folderColor};">${p.folder}</span>
+            <span class="card-folder">${p.folder}</span>
           </div>
         </div>
         <div class="card-industry-label">${p.industry}</div>
@@ -629,35 +692,35 @@ function renderProjects(filter = 'All') {
         <p class="card-desc">${p.desc}</p>
         <div class="card-tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
         <div class="card-action">
-          <span class="card-action-btn">View Asset ${arrowSvg}</span>
+          <span class="card-action-btn">View project ${arrowSvg}</span>
           <div class="card-arrow">${arrowSvg}</div>
         </div>
-      </div>
+        </div>
+      </a>
     `;
+    wrap.querySelector('.project-logo-slot').replaceWith(createLogoElement(company));
     grid.appendChild(wrap);
   });
 
-  setupObserver(document.querySelectorAll('.project-card-wrap.reveal-box:not(.visible)'));
+  updateShowMore();
+  revealElements([...grid.children]);
 }
 
-// ============================================================
-// INTERSECTION OBSERVER
-// ============================================================
-function setupObserver(elements) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
-
-  elements.forEach(el => observer.observe(el));
+function updateShowMore() {
+  const remaining = document.querySelectorAll('#project-grid > [hidden]').length;
+  const button = document.getElementById('show-more');
+  button.hidden = remaining === 0;
+  button.textContent = `Show more projects (${remaining} remaining)`;
 }
 
-function setupGlobalReveal() {
-  setupObserver(document.querySelectorAll('.reveal-box'));
+function setupShowMore() {
+  document.getElementById('show-more').addEventListener('click', () => {
+    const next = [...document.querySelectorAll('#project-grid > [hidden]')].slice(0, 6);
+    next.forEach(card => { card.hidden = false; });
+    revealElements(next);
+    next[0]?.querySelector('a').focus();
+    updateShowMore();
+  });
 }
 
 // ============================================================
@@ -665,10 +728,15 @@ function setupGlobalReveal() {
 // ============================================================
 function setupFilters() {
   document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', e => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      e.target.classList.add('active');
-      renderProjects(e.target.dataset.filter);
+    btn.addEventListener('click', () => {
+      if (btn.classList.contains('active')) return;
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+      transitionProjects(btn.dataset.filter);
     });
   });
 }
@@ -689,16 +757,26 @@ function setupHamburger() {
   const menu = document.getElementById('mobile-menu');
   if (!btn || !menu) return;
 
-  btn.addEventListener('click', () => {
-    btn.classList.toggle('open');
-    menu.classList.toggle('open');
-  });
+  function setMenuOpen(open) {
+    btn.classList.toggle('open', open);
+    menu.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    menu.inert = !open;
+  }
 
+  btn.addEventListener('click', () => setMenuOpen(btn.getAttribute('aria-expanded') !== 'true'));
   menu.querySelectorAll('.mobile-link').forEach(link => {
-    link.addEventListener('click', () => {
-      btn.classList.remove('open');
-      menu.classList.remove('open');
-    });
+    link.addEventListener('click', () => setMenuOpen(false));
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
+      setMenuOpen(false);
+      btn.focus();
+    }
+  });
+  window.matchMedia('(min-width: 761px)').addEventListener('change', event => {
+    if (event.matches) setMenuOpen(false);
   });
 }
 
@@ -710,6 +788,11 @@ document.addEventListener('DOMContentLoaded', () => {
   renderProjects();
   renderIndustries();
   setupFilters();
-  setupGlobalReveal();
+  setupShowMore();
   setupHamburger();
+  revealElements(document.querySelectorAll('.section-header, .clients-section .section-heading-row, .industry-card, .contact-content'));
+  playMotion(document.querySelector('.hero-content'), [
+    { opacity: 0, transform: 'translateY(20px)' },
+    { opacity: 1, transform: 'translateY(0)' }
+  ], { duration: 800, easing: 'cubic-bezier(.16,1,.3,1)' });
 });
