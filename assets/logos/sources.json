@@ -46,5 +46,13 @@
   "credpal.com": {
     "path": "assets/logos/credpal.com.png",
     "source": "https://www.google.com/s2/favicons?domain=credpal.com&sz=128"
+  },
+  "usefathom.com": {
+    "path": "assets/logos/usefathom.com.png",
+    "source": "https://www.google.com/s2/favicons?domain=usefathom.com&sz=128"
+  },
+  "buttondown.com": {
+    "path": "assets/logos/buttondown.com.png",
+    "source": "https://www.google.com/s2/favicons?domain=buttondown.com&sz=128"
   }
 }
